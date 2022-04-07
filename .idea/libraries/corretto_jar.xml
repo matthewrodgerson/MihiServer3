@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="corretto_jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/corretto_jar/corretto.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/corretto_jar/corretto.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

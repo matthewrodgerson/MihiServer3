@@ -21,6 +21,7 @@ import com.opencsv.CSVWriter
 import org.eclipse.jetty.server.HttpChannel
 import org.eclipse.jetty.server.HttpOutput
 import org.eclipse.jetty.server.HttpWriter
+import org.example.Application
 import org.http4k.routing.header
 import org.http4k.routing.path
 import java.io.FileInputStream
@@ -68,11 +69,14 @@ fun getHandler(): HttpServlet {
             Response(OK).body("ping")
         },
         "" bind GET to {
-            val index = FileInputStream("./src/main/resources/index.html")
+            val classLoader = Thread.currentThread().contextClassLoader
+            val index = classLoader.getResourceAsStream("index.html")
             Response(OK).body(index)
         },
         "/images/{image}" bind GET to {
-            val index = FileInputStream("./images/"+it.path("image"))
+            val classLoader = Thread.currentThread().contextClassLoader
+            val index = classLoader.getResourceAsStream("images/"+it.path("image"))
+//            val index = FileInputStream("./images/"+it.path("image"))
             Response(OK).body(index)
         }
 

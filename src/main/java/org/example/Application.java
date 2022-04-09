@@ -1,7 +1,5 @@
 package org.example;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +12,6 @@ import java.io.StringWriter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;

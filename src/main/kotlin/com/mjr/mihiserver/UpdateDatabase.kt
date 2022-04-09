@@ -4,6 +4,7 @@ import java.io.File
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.DriverManager.println
+import java.sql.ResultSet
 import java.sql.SQLException
 import java.sql.Statement
 import java.time.Instant
@@ -16,6 +17,7 @@ object SendToDatabase {
 //    internal var password = "RFriMZSNyDJeNL22pS57"
     internal var username = "appuser"
     internal var password = "appuserpassword"
+    lateinit var resultSet: ResultSet
 
     fun getConnection() {
         val connectionProperties = Properties()
@@ -43,5 +45,20 @@ object SendToDatabase {
         } catch (e:Exception) {
             println(e.localizedMessage)
         }
+    }
+
+    fun getData(): ResultSet {
+        var stmt: Statement? = conn!!.createStatement()
+        val sqlText = "select * from sessions;"
+        resultSet =
+        try {
+            stmt!!.executeQuery(sqlText)
+        } catch (e:Exception) {
+            println(e.localizedMessage)
+            stmt = conn!!.createStatement()
+            stmt!!.executeQuery("select 1 where false")
+        }
+        return resultSet
+
     }
 }

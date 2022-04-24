@@ -47,9 +47,13 @@ object SendToDatabase {
         }
     }
 
-    fun getData(): ResultSet {
+    fun getData(orgName:String): ResultSet {
         var stmt: Statement? = conn!!.createStatement()
-        val sqlText = "select * from sessions;"
+        val sqlText =
+            if (orgName != "") {
+                "select * from sessions where organisation= '$orgName';"
+            } else {"select * from sessions"}
+        
         resultSet =
         try {
             stmt!!.executeQuery(sqlText)

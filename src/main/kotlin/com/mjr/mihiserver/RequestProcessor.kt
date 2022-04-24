@@ -52,7 +52,13 @@ fun getHandler(): HttpServlet {
             Response(OK).body("Data successfully added to server")
         },
         "/getdata" bind GET to {
-            val extract = SendToDatabase.getData()
+            var orgNameIndex = 0
+            var orgName = ""
+            try {orgNameIndex = it.uri.toString().indexOf("orgname")
+                orgName = it.uri.toString().substring(orgNameIndex+8)
+            }
+            catch (e: Exception) {}
+            val extract = SendToDatabase.getData(orgName)
             val outputList = mutableListOf<String>()
             while (extract.next()) {
                 val org = extract.getString(2)

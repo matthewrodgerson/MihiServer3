@@ -3,7 +3,37 @@
 
   <head>
     <title>Mihi data store</title>
+    <link rel="icon" type="image/x-icon" href="/images/mihisquare.png">
     <style>
+      @keyframes example {
+        from {background-image: linear-gradient(rgba(0, 255, 255, 0.3), rgba(255, 0, 0, 0.3)), url('images/mihi2transparentwriting.png');}
+        to {background-image: linear-gradient(rgba(255, 0, 0, 0.3), rgba(0, 255, 255, 0.3)), url('images/mihi2transparentwriting.png');}
+      }
+
+      @keyframes example2 {
+        from {opacity: 1}
+        to {opacity: 0}
+      }
+
+      @keyframes example3 {
+        from {opacity: 1; background-color: rgba(0, 255, 0, 0.3)}
+        to {opacity: 1; background-color: rgba(0, 0, 255, 0.3)}
+      }
+
+      .hero-image {
+        background-image: linear-gradient(rgba(0, 255, 255, 0.3), rgba(255, 0, 0, 0.3)), url('images/mihi2transparentwriting.png');
+        height: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: relative;
+        animation-name: example3;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+        -webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+      }
+
       body {
         -moz-transition-property: text-shadow;
         -moz-transition-duration: 4s;
@@ -19,23 +49,24 @@
         text-shadow: #fff 0px 0px 25px;
       }
       .textColumn, .linksColumn {
-        padding: 2em;
+        font-family: Arial, sans-serif;
+        font-size:14px;
       }
       .textColumn {
         position: absolute;
+        padding: 0em;
         top: 0px;
         right: 20%;
         bottom: 0px;
         left: 0px;
 
-        text-align: center;
-        padding-top: 2em;
+        text-align: left;
+        padding-top: 0em;
         background-color: #F0FFFF;
-        background-image: url('images/mihi2transparentwriting.png');
+        background-image: linear-gradient(to bottom right, rgba(0, 100, 255, 0.3), rgba(255, 100, 0, 0.3)):
         background-repeat: no-repeat;
         background-position: center;
-        font-family: Arial, sans-serif;
-        font-size:14px;
+
       }
       .textColumn p {
         width: 75%;
@@ -43,6 +74,7 @@
       }
       .linksColumn {
         position: absolute;
+        padding: 1em;
         top:0px;
         right: 0px;
         bottom: 0px;
@@ -73,14 +105,18 @@
 
   <body>
     <div class="textColumn">
-      <h1>Mihi data store</h1>
+      <div class = "hero-image">
+      </div>
     </div>
     <div class="linksColumn">
-      <h2>Download data</h2>
-      <ul>
-        <li><a href="./getdata">Download .csv</a></li>
-	</li>
-      </ul>
+      <h2>Mihi Data Store</h2>
+      <form action="/getdata">
+        <label for="orgname">Organisation:</label>
+        <input type="text" id="orgname" name="orgname"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+
+      <p>Click the "Submit" button to download data for one organisation code or leave blank for all</p>
     </div>
   </body>
 </html>
